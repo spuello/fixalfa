@@ -1,4 +1,5 @@
 import 'package:app/screens/home_screen.dart';
+import 'package:app/screens/signin_screen.dart';
 import 'package:app/screens/signup_screen.dart';
 import 'package:app/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,8 @@ class FixAlfaApp extends StatelessWidget {
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         HomeScreen.id: (context) => HomeScreen(),
-        SignUpScreen.id: (context) => SignUpScreen()
+        SignUpScreen.id: (context) => SignUpScreen(),
+        SignInScreen.id: (context) => SignInScreen()
       },
     );
   }

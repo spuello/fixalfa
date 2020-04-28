@@ -10,6 +10,14 @@ const kWelcomeLogoStyle = TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.w900,
     letterSpacing: 15.0);
+
+TextStyle kWelcomeLogoStyle2({Color color, double letterSpacing: 15.0}) =>
+    TextStyle(
+        fontSize: 60.0,
+        color: color,
+        fontWeight: FontWeight.w900,
+        letterSpacing: letterSpacing);
+
 const kWelcomeLogoSubtitleStyle =
     TextStyle(color: kSecondaryColor, fontSize: 18.0);
 

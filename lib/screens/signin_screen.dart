@@ -3,12 +3,35 @@ import 'package:app/components/custom_text_field.dart';
 import 'package:app/components/primary_flat_button.dart';
 import 'package:app/components/social_media_auth_button.dart';
 import 'package:app/constants.dart';
+import 'package:app/screens/cockpit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   static const String id = "login_screen";
 
   @override
+  _SignInScreenState createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  String _email;
+  String _password;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _signInWithUserAndPassword() async {
+    try {
+      final AuthResult signedUser = await _auth.signInWithEmailAndPassword(
+          email: _email, password: _password);
+      print(signedUser);
+      if (signedUser != null) {
+        Navigator.pushNamed(context, CockpitScreen.id);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Widget build(BuildContext context) {
     SizedBox verticalSideBox = SizedBox(
       height: 10.0,
@@ -29,12 +52,18 @@ class SignInScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     CustomTextField(
+                      onChanged: (value) {
+                        _email = value;
+                      },
                       hintText: "Correo electrónico",
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
                     ),
                     verticalSideBox,
                     CustomTextField(
+                      onChanged: (value) {
+                        _password = value;
+                      },
                       hintText: "Contraseña",
                       obscureText: true,
                     ),
@@ -43,7 +72,9 @@ class SignInScreen extends StatelessWidget {
                       color: kPrimaryColor,
                       title: "Iniciar sesión",
                       textColor: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        _signInWithUserAndPassword();
+                      },
                       borderSideColor: Colors.transparent,
                     ),
                     verticalSideBox,

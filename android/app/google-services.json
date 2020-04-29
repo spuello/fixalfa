@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "414227118817",
+    "firebase_url": "https://fixalfa.firebaseio.com",
+    "project_id": "fixalfa",
+    "storage_bucket": "fixalfa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414227118817:android:24ff14238c89acc2a255a0",
+        "android_client_info": {
+          "package_name": "com.fixalfa.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414227118817-r229tqom8nvtl4ma7gm4nsfigusopr38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5sp3AOFaF3MGIT8jC0ttrlBRGQg0lsT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414227118817-r229tqom8nvtl4ma7gm4nsfigusopr38.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

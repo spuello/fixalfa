@@ -1,6 +1,6 @@
 import 'package:app/constants.dart';
+import 'package:app/screens/registration_screen.dart';
 import 'package:app/screens/signin_screen.dart';
-import 'package:app/screens/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +76,8 @@ class HomeScreen extends StatelessWidget {
                             title: "Registrarse",
                             color: kPrimaryColor,
                             onPressed: () {
-                              Navigator.pushNamed(context, SignUpScreen.id);
+                              Navigator.pushNamed(
+                                  context, RegistrationScreen.id);
                             }),
                         SizedBox(
                           height: 20.0,

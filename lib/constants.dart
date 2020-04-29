@@ -4,6 +4,8 @@ const Color kPrimaryColor = Color(0xff1E824C);
 const Color kSecondaryColor = Color(0xffFFC107);
 const Color kSecondaryColor2 = Color(0xffFFE59A);
 const Color kInputFieldFillColor = Color(0xfff0f7f3);
+const Color kFacebookBlueColor = Color(0xff4A6EA8);
+const Color kGoogleRedColor = Color(0xffe15f4f);
 
 const kWelcomeLogoStyle = TextStyle(
     fontSize: 60.0,

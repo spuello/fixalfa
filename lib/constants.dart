@@ -7,13 +7,7 @@ const Color kInputFieldFillColor = Color(0xfff0f7f3);
 const Color kFacebookBlueColor = Color(0xff4A6EA8);
 const Color kGoogleRedColor = Color(0xffe15f4f);
 
-const kWelcomeLogoStyle = TextStyle(
-    fontSize: 60.0,
-    color: Colors.white,
-    fontWeight: FontWeight.w900,
-    letterSpacing: 15.0);
-
-TextStyle kWelcomeLogoStyle2({Color color, double letterSpacing: 15.0}) =>
+TextStyle kLogoTypeStyle({Color color, double letterSpacing: 15.0}) =>
     TextStyle(
         fontSize: 60.0,
         color: color,

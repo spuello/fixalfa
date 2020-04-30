@@ -7,6 +7,8 @@ import 'package:app/screens/cockpit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
+
 class SignInScreen extends StatefulWidget {
   static const String id = "login_screen";
 
@@ -20,10 +22,16 @@ class _SignInScreenState extends State<SignInScreen> {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   void _signInWithUserAndPassword() async {
+    if (_email == null) {
+      _email = "admin@email.com";
+    }
+    if (_password == null) {
+      _password = "123456";
+    }
+
     try {
       final AuthResult signedUser = await _auth.signInWithEmailAndPassword(
           email: _email, password: _password);
-      print(signedUser);
       if (signedUser != null) {
         Navigator.pushNamed(context, CockpitScreen.id);
       }
@@ -34,77 +42,80 @@ class _SignInScreenState extends State<SignInScreen> {
 
   Widget build(BuildContext context) {
     SizedBox verticalSideBox = SizedBox(
-      height: 10.0,
+      height: 20.0,
     );
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: LayoutBuilder(builder:
-            (BuildContext context, BoxConstraints viewportConstraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints:
-                  BoxConstraints(minHeight: viewportConstraints.maxHeight),
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    CustomTextField(
-                      onChanged: (value) {
-                        _email = value;
-                      },
-                      hintText: "Correo electrónico",
-                      obscureText: false,
-                      keyboardType: TextInputType.emailAddress,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 100.0, bottom: 50.0),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "FIXALFA",
+                      style: kLogoTypeStyle(color: kFixalfaGreen500),
                     ),
-                    verticalSideBox,
-                    CustomTextField(
-                      onChanged: (value) {
-                        _password = value;
-                      },
-                      hintText: "Contraseña",
-                      obscureText: true,
-                    ),
-                    verticalSideBox,
-                    PrimaryFlatButton(
-                      color: kPrimaryColor,
-                      title: "Iniciar sesión",
-                      textColor: Colors.white,
-                      onPressed: () {
-                        _signInWithUserAndPassword();
-                      },
-                      borderSideColor: Colors.transparent,
-                    ),
-                    verticalSideBox,
-                    AuthChoiceDivider(),
-                    verticalSideBox,
-                    SocialMediaAuthButton(
-                      textColor: Colors.white,
-                      borderColor: Colors.transparent,
-                      buttonTitle: "Iniciar con Facebook",
-                      buttonBackgroundColor: (kFacebookBlueColor),
-                      buttonImage: "images/icons/facebook-logo.png",
-                      onTap: () {
-                        print("Facebook LOGIN");
-                      },
-                    ),
-                    verticalSideBox,
-                    SocialMediaAuthButton(
-                      buttonImage: "images/icons/google-logo.png",
-                      buttonBackgroundColor: kGoogleRedColor,
-                      borderColor: (Colors.transparent),
-                      textColor: Colors.white,
-                      buttonTitle: "Iniciar con Google",
-                      onTap: () {},
-                    )
-                  ],
+                  ),
                 ),
-              ),
+                CustomTextField(
+                  onChanged: (value) {
+                    _email = value;
+                  },
+                  hintText: "Correo electrónico",
+                  obscureText: false,
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                verticalSideBox,
+                CustomTextField(
+                  onChanged: (value) {
+                    _password = value;
+                  },
+                  hintText: "Contraseña",
+                  obscureText: true,
+                ),
+                verticalSideBox,
+                PrimaryFlatButton(
+                  color: kPrimaryColor,
+                  title: "Iniciar sesión",
+                  textColor: Colors.white,
+                  onPressed: () {
+                    _signInWithUserAndPassword();
+                  },
+                  borderSideColor: Colors.transparent,
+                ),
+                verticalSideBox,
+                AuthChoiceDivider(),
+                verticalSideBox,
+                SocialMediaAuthButton(
+                  textColor: Colors.white,
+                  borderColor: Colors.transparent,
+                  buttonTitle: "Iniciar con Facebook",
+                  buttonBackgroundColor: (kFacebookBlueColor),
+                  buttonImage: "images/icons/facebook-logo.png",
+                  onTap: () {
+                    print("Facebook LOGIN");
+                  },
+                ),
+                verticalSideBox,
+                SocialMediaAuthButton(
+                  buttonImage: "images/icons/google-logo.png",
+                  buttonBackgroundColor: kGoogleRedColor,
+                  borderColor: (Colors.transparent),
+                  textColor: Colors.white,
+                  buttonTitle: "Iniciar con Google",
+                  onTap: () {},
+                )
+              ],
             ),
-          );
-        }),
+          ),
+        ),
       ),
     );
   }

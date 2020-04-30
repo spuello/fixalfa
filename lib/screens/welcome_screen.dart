@@ -1,3 +1,4 @@
+import 'package:app/colors.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       "FIXALFA",
-                      style: kWelcomeLogoStyle,
+                      style: kLogoTypeStyle(color: kFixalfaBackgroundWhite),
                     ),
                     SizedBox(
                       height: 5.0,

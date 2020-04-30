@@ -10,6 +10,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
+
 class RegistrationScreen extends StatefulWidget {
   static const String id = "signup_screen";
   @override
@@ -53,14 +55,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     BoxConstraints(minHeight: viewportConstraints.maxHeight),
                 child: Container(
                   padding: EdgeInsets.only(
-                      top: 50.0, right: 30.0, bottom: 20.0, left: 30.0),
+                      top: 50.0, right: 25.0, bottom: 20.0, left: 25.0),
                   color: Colors.white,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage("images/app_launch.png"),
-                        radius: 70.0,
+                      Container(
+                        margin: EdgeInsets.only(bottom: 50.0, top: 20.0),
+                        child: Text(
+                          "FIXALFA",
+                          style: kLogoTypeStyle(color: kFixalfaGreen500),
+                        ),
                       ),
                       CustomTextField(
                         onChanged: (value) {

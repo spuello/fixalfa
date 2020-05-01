@@ -1,3 +1,5 @@
+import 'package:app/colors.dart';
+import 'package:app/screens/vendor_screen.dart';
 import 'package:flutter/material.dart';
 
 class Technicians extends StatefulWidget {
@@ -22,7 +24,7 @@ class _TechniciansState extends State<Technicians> {
       _technicianList.add(
         ListTile(
           onTap: () {
-            print("Hello");
+            Navigator.pushNamed(context, VendorScreen.id);
           },
           contentPadding: EdgeInsets.all(10.0),
           leading: Image.network("https://robohash.org/$i"),
@@ -77,8 +79,11 @@ class _TechniciansState extends State<Technicians> {
         appBar: AppBar(
           title: Text("Categoría seleccionada"),
         ),
-        body: ListView(
-          children: technicianServiceList(),
+        body: Container(
+          color: kFixalfaBackgroundWhite,
+          child: ListView(
+            children: technicianServiceList(),
+          ),
         ));
   }
 }

@@ -4,6 +4,7 @@ import 'package:app/screens/home_screen.dart';
 import 'package:app/screens/registration_screen.dart';
 import 'package:app/screens/signin_screen.dart';
 import 'package:app/screens/technicians-screen.dart';
+import 'package:app/screens/vendor_screen.dart';
 import 'package:app/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,8 @@ class FixAlfaApp extends StatelessWidget {
         RegistrationScreen.id: (context) => RegistrationScreen(),
         SignInScreen.id: (context) => SignInScreen(),
         CockpitScreen.id: (context) => CockpitScreen(),
-        Technicians.id: (context) => Technicians()
+        Technicians.id: (context) => Technicians(),
+        VendorScreen.id: (context) => VendorScreen()
       },
     );
   }

@@ -22,13 +22,6 @@ class _SignInScreenState extends State<SignInScreen> {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   void _signInWithUserAndPassword() async {
-    if (_email == null) {
-      _email = "admin@email.com";
-    }
-    if (_password == null) {
-      _password = "123456";
-    }
-
     try {
       final AuthResult signedUser = await _auth.signInWithEmailAndPassword(
           email: _email, password: _password);

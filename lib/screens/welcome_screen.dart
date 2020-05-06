@@ -1,29 +1,11 @@
 import 'package:app/colors.dart';
+import 'package:app/components/CircularShape.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
   static const String id = "welcome_screen";
-
-  Container circularShape(
-      {double height: 5.0,
-      double width: 5.0,
-      double borderRadius: 50.0,
-      Color color}) {
-    return Container(
-      margin: EdgeInsets.only(right: 10.0),
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.all(
-          Radius.circular(borderRadius),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,13 +64,13 @@ class WelcomeScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: <Widget>[
-                          circularShape(
+                          CircularShape(
                             color: Colors.grey,
                           ),
-                          circularShape(
+                          CircularShape(
                             color: Colors.grey,
                           ),
-                          circularShape(
+                          CircularShape(
                             color: kSecondaryColor,
                             height: 8.0,
                             width: 25.0,

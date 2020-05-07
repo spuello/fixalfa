@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: kFixalfaGreen500,
       body: Column(
         children: [
           Expanded(
@@ -89,14 +89,14 @@ class WelcomeScreen extends StatelessWidget {
                             color: Colors.grey,
                           ),
                           circularShape(
-                            color: kSecondaryColor,
+                            color: kFixalfaAmber,
                             height: 8.0,
                             width: 25.0,
                           ),
                         ],
                       ),
                       FlatButton(
-                        color: kSecondaryColor,
+                        color: kFixalfaAmber,
                         padding: EdgeInsets.symmetric(
                             horizontal: 25.0, vertical: 15.0),
                         onPressed: () {

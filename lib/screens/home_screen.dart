@@ -1,8 +1,8 @@
 import 'package:app/colors.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/cockpit.dart';
+import 'package:app/screens/login_screen.dart';
 import 'package:app/screens/registration_screen.dart';
-import 'package:app/screens/signin_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     getFlatButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, SignInScreen.id);
+                          Navigator.pushNamed(context, LoginScreen.id);
                         },
                         title: "Iniciar Sesión",
                         borderSideColor: kFixalfaGreen500,

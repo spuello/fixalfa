@@ -1,36 +1,47 @@
+import 'package:app/blocs/login/bloc.dart';
 import 'package:app/components/auth_choice_divider.dart';
 import 'package:app/components/custom_text_field.dart';
 import 'package:app/components/primary_flat_button.dart';
 import 'package:app/components/social_media_auth_button.dart';
-import 'package:app/constants.dart';
-import 'package:app/screens/cockpit.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app/repositories/user_repositories.dart';
 import 'package:flutter/material.dart';
 
 import '../colors.dart';
+import '../constants.dart';
 
-class SignInScreen extends StatefulWidget {
-  static const String id = "login_screen";
+class LoginForm extends StatefulWidget {
+  final UserRepository _userRepository = UserRepository();
+
+  //TODO: QUITAR COMENTARIO DEL REPOSIORIO VACIO Y PONER VARIABLE DE REPOSITORIO SIN INICIALIZAR
+//  LoginForm({@required UserRepository userRepository})
+//      : assert(userRepository != null),
+//        _userRepository = userRepository;
 
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  _LoginFormState createState() => _LoginFormState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
-  String _email;
-  String _password;
-  FirebaseAuth _auth = FirebaseAuth.instance;
+class _LoginFormState extends State<LoginForm> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  void _signInWithUserAndPassword() async {
-    try {
-      final AuthResult signedUser = await _auth.signInWithEmailAndPassword(
-          email: _email, password: _password);
-      if (signedUser != null) {
-        Navigator.pushNamed(context, CockpitScreen.id);
-      }
-    } catch (e) {
-      print(e);
-    }
+  LoginBloc _loginBloc;
+
+  UserRepository get _userRepository => widget._userRepository;
+
+  bool get isPopulated =>
+      _emailController.text.isNotEmpty & _passwordController.text.isNotEmpty;
+
+  bool isLoginButtonEnabled(LoginState state) {
+    return state.isFormValid && isPopulated && !state.isSubmitting;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // _loginBloc = BlocProvider.of<LoginBloc>(context);
+    _emailController.addListener(_onEmailChanged);
+    _passwordController.addListener(_onPassswordChanged);
   }
 
   Widget build(BuildContext context) {
@@ -44,43 +55,35 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
-              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 100.0, bottom: 50.0),
                   child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "FIXALFA",
-                      style: kLogoTypeStyle(color: kFixalfaGreen500),
-                    ),
-                  ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        "FIXALFA",
+                        style: kLogoTypeStyle(color: kFixalfaGreen500),
+                      )),
                 ),
                 CustomTextField(
-                  onChanged: (value) {
-                    _email = value;
-                  },
+                  onChanged: (value) {},
                   hintText: "Correo electrónico",
                   obscureText: false,
                   keyboardType: TextInputType.emailAddress,
                 ),
                 verticalSideBox,
                 CustomTextField(
-                  onChanged: (value) {
-                    _password = value;
-                  },
+                  onChanged: (value) {},
                   hintText: "Contraseña",
                   obscureText: true,
                 ),
                 verticalSideBox,
                 PrimaryFlatButton(
-                  color: kPrimaryColor,
+                  color: kFixalfaGreen500,
                   title: "Iniciar sesión",
                   textColor: Colors.white,
-                  onPressed: () {
-                    _signInWithUserAndPassword();
-                  },
+                  onPressed: () {},
                   borderSideColor: Colors.transparent,
                 ),
                 verticalSideBox,
@@ -104,7 +107,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   textColor: Colors.white,
                   buttonTitle: "Iniciar con Google",
                   onTap: () {},
-                )
+                ),
               ],
             ),
           ),
@@ -112,4 +115,8 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
+
+  void _onPassswordChanged() {}
+
+  void _onEmailChanged() {}
 }

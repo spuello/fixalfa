@@ -4,7 +4,7 @@ import 'package:app/components/primary_flat_button.dart';
 import 'package:app/components/social_media_auth_button.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/cockpit.dart';
-import 'package:app/screens/signin_screen.dart';
+import 'package:app/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -86,7 +86,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       getVerticalSideBox(),
                       PrimaryFlatButton(
                         title: "Registrar",
-                        color: kPrimaryColor,
+                        color: kFixalfaGreen500,
                         textColor: Colors.white,
                         onPressed: () {
                           _registerWithEmailAndPassword();
@@ -137,7 +137,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           TextSpan(
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  Navigator.pushNamed(context, SignInScreen.id);
+                                  Navigator.pushNamed(
+                                    context,
+                                    LoginScreen.id,
+                                  );
                                 },
                               text: " Inciar sesión",
                               style: TextStyle(color: Colors.blue))

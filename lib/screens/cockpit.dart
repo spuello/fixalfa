@@ -1,23 +1,19 @@
+import 'package:app/blocs/authentication/authentication_bloc.dart';
 import 'package:app/colors.dart';
-import 'package:app/screens/technicians-screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CockpitScreen extends StatefulWidget {
+class CockpitScreen extends StatelessWidget {
   static const String id = "cockpit_screen";
-  @override
-  _CockpitScreenState createState() => _CockpitScreenState();
-}
 
-class _CockpitScreenState extends State<CockpitScreen> {
-  @override
   List<ListTile> _categories = <ListTile>[];
 
   List<Widget> getCategories(int num) {
     for (int i = 0; i < num; i++) {
       _categories.add(ListTile(
         onTap: () {
-          Navigator.pushNamed(context, Technicians.id);
+          //Navigator.pushNamed(context, Technicians.id);
         },
         title: Text("Categoria #$i"),
         trailing: Icon(Icons.arrow_forward_ios),
@@ -33,10 +29,10 @@ class _CockpitScreenState extends State<CockpitScreen> {
           "Categorías",
           style: TextStyle(fontSize: 30.0, letterSpacing: 1),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {},
-        ),
+//        leading: IconButton(
+//          icon: Icon(Icons.menu),
+//          onPressed: () {},
+//        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.tune),
@@ -47,6 +43,38 @@ class _CockpitScreenState extends State<CockpitScreen> {
             onPressed: () {},
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'FIXALFA',
+                style: TextStyle(
+                    color: kFixalfaGreen400,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    letterSpacing: 1.5),
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.person_outline),
+              title: Text("CORREO DEL USUARIO"),
+            ),
+            ListTile(
+              onTap: () {
+                BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+              },
+              leading: Icon(Icons.exit_to_app),
+              title: Text("Cerrar sesión"),
+            )
+          ],
+        ),
       ),
       resizeToAvoidBottomInset: false,
       body: SafeArea(

@@ -5,6 +5,8 @@ const Color kFixalfaGreen100 = Color(0xff62db9a);
 const Color kFixalfaGreen300 = Color(0xff55b278);
 const Color kFixalfaGreen400 = Color(0xff28ab64);
 const Color kFixalfaGreen500 = Color(0xff1E824C);
+const Color kFacebookBlueColor = Color(0xff4A6EA8);
+const Color kGoogleRedColor = Color(0xffe15f4f);
 
 const Color kFixalfaAmber = Colors.amber;
 const kFixalfaErrorRed = const Color(0xFFC5032B);

@@ -22,7 +22,7 @@ class UserRepository {
     return _firebaseAuth.currentUser();
   }
 
-  Future<void> signInWithCredential(String email, String password) async {
+  Future<void> signInWithCredentials(String email, String password) async {
     return await _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }

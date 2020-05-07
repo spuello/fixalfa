@@ -1,10 +1,10 @@
 import 'package:app/colors.dart';
 import 'package:app/constants.dart';
-import 'package:app/screens/home_screen.dart';
+import 'package:app/screens/authentication/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  static const String id = "welcome_screen";
+  static const String routeName = "welcome_screen";
 
   Container circularShape(
       {double height: 5.0,
@@ -100,7 +100,8 @@ class WelcomeScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 25.0, vertical: 15.0),
                         onPressed: () {
-                          Navigator.pushNamed(context, HomeScreen.id);
+                          Navigator.pushNamed(
+                              context, AuthenticationScreen.routeName);
                         },
                         child: Text(
                           "Comenzar",

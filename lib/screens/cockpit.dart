@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CockpitScreen extends StatelessWidget {
-  static const String id = "cockpit_screen";
+  static const String routeName = "cockpit_screen";
 
   List<ListTile> _categories = <ListTile>[];
 

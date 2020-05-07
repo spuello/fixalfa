@@ -1,13 +1,13 @@
 import 'package:app/colors.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
+class FixAlfaFormField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final TextInputType keyboardType;
   final Function onChanged;
 
-  CustomTextField(
+  FixAlfaFormField(
       {this.hintText, this.obscureText, this.keyboardType, this.onChanged});
 
   @override

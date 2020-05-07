@@ -3,7 +3,7 @@ import 'package:app/screens/vendor_screen.dart';
 import 'package:flutter/material.dart';
 
 class Technicians extends StatefulWidget {
-  static const String id = "technicians-screen";
+  static const String routeName = "technicians-screen";
   @override
   _TechniciansState createState() => _TechniciansState();
 }
@@ -24,7 +24,7 @@ class _TechniciansState extends State<Technicians> {
       _technicianList.add(
         ListTile(
           onTap: () {
-            Navigator.pushNamed(context, VendorScreen.id);
+            Navigator.pushNamed(context, VendorScreen.routeName);
           },
           contentPadding: EdgeInsets.all(10.0),
           leading: Image.network("https://robohash.org/$i"),

@@ -1,11 +1,10 @@
 import 'package:app/blocs/authentication/authentication_bloc.dart';
 import 'package:app/colors.dart';
 import 'package:app/repositories/user_repositories.dart';
-import 'package:app/screens/Login_form.dart';
+import 'package:app/screens/authentication/authentication_screen.dart';
+import 'package:app/screens/authentication/login_screen.dart';
+import 'package:app/screens/authentication/registration_screen.dart';
 import 'package:app/screens/cockpit.dart';
-import 'package:app/screens/home_screen.dart';
-import 'package:app/screens/login_screen.dart';
-import 'package:app/screens/registration_screen.dart';
 import 'package:app/screens/splash_screen.dart';
 import 'package:app/screens/technicians-screen.dart';
 import 'package:app/screens/vendor_screen.dart';
@@ -43,26 +42,18 @@ class FixAlfaApp extends StatelessWidget {
           return SplashScreen();
         }
         if (state is Authenticated) {
-          print(state.currentUser);
           return CockpitScreen();
         }
-        //return WelcomeScreen();
-        return LoginForm();
-
-//        return Container(
-//          child: Center(
-//            child: Text("Not Authenticated"),
-//          ),
-//        );
+        return WelcomeScreen();
       }),
       routes: {
-        WelcomeScreen.id: (context) => WelcomeScreen(),
-        HomeScreen.id: (context) => HomeScreen(),
-        RegistrationScreen.id: (context) => RegistrationScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-        CockpitScreen.id: (context) => CockpitScreen(),
-        Technicians.id: (context) => Technicians(),
-        VendorScreen.id: (context) => VendorScreen()
+        WelcomeScreen.routeName: (context) => WelcomeScreen(),
+        AuthenticationScreen.routeName: (context) => AuthenticationScreen(),
+        RegistrationScreen.routeName: (context) => RegistrationScreen(),
+        LoginScreen.routeName: (context) => LoginScreen(),
+        CockpitScreen.routeName: (context) => CockpitScreen(),
+        Technicians.routeName: (context) => Technicians(),
+        VendorScreen.routeName: (context) => VendorScreen()
       },
     );
   }

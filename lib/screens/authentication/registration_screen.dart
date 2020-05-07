@@ -3,17 +3,17 @@ import 'package:app/components/custom_text_field.dart';
 import 'package:app/components/primary_flat_button.dart';
 import 'package:app/components/social_media_auth_button.dart';
 import 'package:app/constants.dart';
+import 'package:app/screens/authentication/login_screen.dart';
 import 'package:app/screens/cockpit.dart';
-import 'package:app/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../../colors.dart';
 
 class RegistrationScreen extends StatefulWidget {
-  static const String id = "signup_screen";
+  static const String routeName = "registration_screen";
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
@@ -29,7 +29,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           email: _email, password: _password);
 
       if (newUser != null) {
-        Navigator.pushNamed(context, CockpitScreen.id);
+        Navigator.pushNamed(context, CockpitScreen.routeName);
       }
     } catch (e) {
       print(e);
@@ -67,7 +67,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           style: kLogoTypeStyle(color: kFixalfaGreen500),
                         ),
                       ),
-                      CustomTextField(
+                      FixAlfaFormField(
                         onChanged: (value) {
                           _email = value;
                         },
@@ -76,7 +76,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         keyboardType: TextInputType.emailAddress,
                       ),
                       getVerticalSideBox(),
-                      CustomTextField(
+                      FixAlfaFormField(
                         onChanged: (value) {
                           _password = value;
                         },
@@ -139,7 +139,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 ..onTap = () {
                                   Navigator.pushNamed(
                                     context,
-                                    LoginScreen.id,
+                                    LoginScreen.routeName,
                                   );
                                 },
                               text: " Inciar sesión",

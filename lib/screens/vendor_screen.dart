@@ -2,7 +2,7 @@ import 'package:app/colors.dart';
 import 'package:flutter/material.dart';
 
 class VendorScreen extends StatefulWidget {
-  static const String id = "vendor_screen";
+  static const String routeName = "vendor_screen";
   @override
   _VendorScreenState createState() => _VendorScreenState();
 }

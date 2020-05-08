@@ -30,6 +30,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: event.email,
         password: event.password,
       );
+    } else if (event is LoginWithFacebookPressed) {
+      yield* _mapLoginWithFacebookPressed();
     }
   }
 
@@ -62,6 +64,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       await _userRepository.signInWithCredentials(email, password);
       yield LoginState.success();
+    } catch (_) {
+      yield LoginState.failure();
+    }
+  }
+
+  Stream<LoginState> _mapLoginWithFacebookPressed() async* {
+    try {
+      var user = await _userRepository.signInWithFacebook();
+      print("[login_bloc.dart]" + user.email);
     } catch (_) {
       yield LoginState.failure();
     }

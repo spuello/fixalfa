@@ -1,8 +1,9 @@
 import 'package:app/blocs/authentication/authentication_bloc.dart';
 import 'package:app/blocs/login/bloc.dart';
 import 'package:app/components/auth_choice_divider.dart';
+import 'package:app/components/facebook_login_button.dart';
+import 'package:app/components/google_login_button.dart';
 import 'package:app/components/primary_flat_button.dart';
-import 'package:app/components/social_media_auth_button.dart';
 import 'package:app/components/text_formfield_decoration.dart';
 import 'package:app/repositories/user_repositories.dart';
 import 'package:flutter/material.dart';
@@ -121,25 +122,9 @@ class _LoginFormState extends State<LoginForm> {
             verticalSideBox,
             AuthChoiceDivider(),
             verticalSideBox,
-            SocialMediaAuthButton(
-              textColor: Colors.white,
-              borderColor: Colors.transparent,
-              buttonTitle: "Iniciar con Facebook",
-              buttonBackgroundColor: (kFacebookBlueColor),
-              buttonImage: "images/icons/facebook-logo.png",
-              onTap: () {
-                print("Facebook LOGIN");
-              },
-            ),
+            FacebookLoginButton(),
             verticalSideBox,
-            SocialMediaAuthButton(
-              buttonImage: "images/icons/google-logo.png",
-              buttonBackgroundColor: kGoogleRedColor,
-              borderColor: (Colors.transparent),
-              textColor: Colors.white,
-              buttonTitle: "Iniciar con Google",
-              onTap: () {},
-            ),
+            GoogleLoginButton(),
           ],
         ),
       );

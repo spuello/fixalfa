@@ -50,6 +50,8 @@ class Submitted extends LoginEvent {
   }
 }
 
+class LoginWithFacebookPressed extends LoginEvent {}
+
 class LoginWithGooglePressed extends LoginEvent {}
 
 class LoginWithCredentialsPressed extends LoginEvent {

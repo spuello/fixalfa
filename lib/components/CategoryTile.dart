@@ -10,7 +10,7 @@ class CategoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.pushNamed(context, Technicians.id);
+        Navigator.pushNamed(context, Technicians.routeName);
       },
       leading: CircleAvatar(
         child: Text(category.id.toString()),

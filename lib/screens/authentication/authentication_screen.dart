@@ -2,7 +2,7 @@ import 'package:app/colors.dart';
 import 'package:app/constants.dart';
 import 'package:app/repositories/user_repositories.dart';
 import 'package:app/screens/authentication/login_screen.dart';
-import 'package:app/screens/authentication/registration_screen.dart';
+import 'package:app/screens/authentication/register_screen.dart';
 import 'package:app/screens/cockpit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -66,8 +66,8 @@ class AuthenticationScreen extends StatelessWidget {
                         title: "Registrarse",
                         color: kFixalfaGreen500,
                         onPressed: () {
-                          Navigator.pushNamed(
-                              context, RegistrationScreen.routeName);
+                          Navigator.pushNamed(context, RegisterScreen.routeName,
+                              arguments: UserRepository());
                         }),
                     SizedBox(
                       height: 20.0,

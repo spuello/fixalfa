@@ -24,6 +24,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield* _mapPasswordChangedToState(event.password);
     } else if (event is Submitted) {
       yield* _mapFormSubmittedToState(event.email, event.password);
+    } else if (event is RegisterWithFacebookPressed) {
+      yield* _mapRegisterWithFacebookPressed();
+    } else if (event is RegisterWithGooglePressed) {
+      yield* _mapRegisterWithGooglePressed();
     }
   }
 
@@ -52,6 +56,24 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield RegisterState.success();
     } catch (_) {
       yield RegisterState.failure();
+    }
+  }
+
+  Stream<RegisterState> _mapRegisterWithFacebookPressed() async* {
+    try {
+      await _userRepository.signInWithFacebook();
+      yield RegisterState.success();
+    } catch (_) {
+      yield RegisterState.failure();
+    }
+  }
+
+  Stream<RegisterState> _mapRegisterWithGooglePressed() async* {
+    try {
+      await _userRepository.signInWithGoogle();
+      yield RegisterState.success();
+    } catch (_) {
+      yield RegisterState.success();
     }
   }
 }

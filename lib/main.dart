@@ -3,7 +3,7 @@ import 'package:app/colors.dart';
 import 'package:app/repositories/user_repositories.dart';
 import 'package:app/screens/authentication/authentication_screen.dart';
 import 'package:app/screens/authentication/login_screen.dart';
-import 'package:app/screens/authentication/registration_screen.dart';
+import 'package:app/screens/authentication/register_screen.dart';
 import 'package:app/screens/cockpit.dart';
 import 'package:app/screens/splash_screen.dart';
 import 'package:app/screens/technicians-screen.dart';
@@ -49,7 +49,7 @@ class FixAlfaApp extends StatelessWidget {
       routes: {
         WelcomeScreen.routeName: (context) => WelcomeScreen(),
         AuthenticationScreen.routeName: (context) => AuthenticationScreen(),
-        RegistrationScreen.routeName: (context) => RegistrationScreen(),
+        RegisterScreen.routeName: (context) => RegisterScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         CockpitScreen.routeName: (context) => CockpitScreen(),
         Technicians.routeName: (context) => Technicians(),

@@ -1,8 +1,8 @@
 import 'package:app/blocs/authentication/authentication_bloc.dart';
 import 'package:app/blocs/login/bloc.dart';
 import 'package:app/components/auth_choice_divider.dart';
-import 'package:app/components/facebook_login_button.dart';
-import 'package:app/components/google_login_button.dart';
+import 'package:app/components/facebook_button.dart';
+import 'package:app/components/google_button.dart';
 import 'package:app/components/primary_flat_button.dart';
 import 'package:app/components/text_formfield_decoration.dart';
 import 'package:app/repositories/user_repositories.dart';
@@ -122,9 +122,19 @@ class _LoginFormState extends State<LoginForm> {
             verticalSideBox,
             AuthChoiceDivider(),
             verticalSideBox,
-            FacebookLoginButton(),
+            FacebookButton(
+              onPressed: () {
+                BlocProvider.of<LoginBloc>(context)
+                    .add(LoginWithFacebookPressed());
+              },
+            ),
             verticalSideBox,
-            GoogleLoginButton(),
+            GoogleButton(
+              onPressed: () {
+                BlocProvider.of<LoginBloc>(context)
+                    .add(LoginWithGooglePressed());
+              },
+            ),
           ],
         ),
       );

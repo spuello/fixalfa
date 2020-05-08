@@ -1,6 +1,5 @@
 import 'package:app/colors.dart';
 import 'package:app/constants.dart';
-import 'package:app/repositories/user_repositories.dart';
 import 'package:app/screens/authentication/login_screen.dart';
 import 'package:app/screens/authentication/register_screen.dart';
 import 'package:app/screens/cockpit.dart';
@@ -66,16 +65,15 @@ class AuthenticationScreen extends StatelessWidget {
                         title: "Registrarse",
                         color: kFixalfaGreen500,
                         onPressed: () {
-                          Navigator.pushNamed(context, RegisterScreen.routeName,
-                              arguments: UserRepository());
+                          Navigator.pushNamed(
+                              context, RegisterScreen.routeName);
                         }),
                     SizedBox(
                       height: 20.0,
                     ),
                     getFlatButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, LoginScreen.routeName,
-                              arguments: UserRepository());
+                          Navigator.pushNamed(context, LoginScreen.routeName);
                         },
                         title: "Iniciar Sesión",
                         borderSideColor: kFixalfaGreen500,

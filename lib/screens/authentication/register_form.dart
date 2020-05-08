@@ -5,7 +5,6 @@ import 'package:app/components/facebook_button.dart';
 import 'package:app/components/google_button.dart';
 import 'package:app/components/primary_flat_button.dart';
 import 'package:app/components/text_formfield_decoration.dart';
-import 'package:app/repositories/user_repositories.dart';
 import 'package:app/screens/cockpit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +54,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
               content: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text("Registrando..."),
                   CircularProgressIndicator()
@@ -73,6 +73,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
               content: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[Text("Registro fallido"), Icon(Icons.error)],
               ),
               backgroundColor: Colors.red,
@@ -105,6 +106,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
                 getVerticalSideBox(),
                 TextFormField(
+                  obscureText: true,
                   controller: _passwordController,
                   decoration: TexTFormFieldInputDecoration.getDecoration(
                       hintText: "Contraseña", iconData: Icons.lock),
@@ -164,8 +166,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.pushNamed(context, LoginScreen.routeName,
-                                arguments: UserRepository());
+                            Navigator.pushNamed(context, LoginScreen.routeName);
                           },
                         text: " Inciar sesión",
                         style: TextStyle(color: Colors.blue))

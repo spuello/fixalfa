@@ -11,14 +11,11 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserRepository _userRepository =
-        ModalRoute.of(context).settings.arguments;
-    print("[register_screen.dart]" + _userRepository.toString());
     return Scaffold(
       backgroundColor: kFixalfaBackgroundWhite,
       body: SafeArea(
         child: BlocProvider<RegisterBloc>(
-          create: (context) => RegisterBloc(userRepository: _userRepository),
+          create: (context) => RegisterBloc(userRepository: UserRepository()),
           child: RegisterForm(),
         ),
       ),

@@ -9,16 +9,12 @@ class LoginScreen extends StatelessWidget {
   static const String routeName = "login_screen";
   @override
   Widget build(BuildContext context) {
-    final UserRepository _userRepository =
-        ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: kFixalfaBackgroundWhite,
       body: SafeArea(
         child: BlocProvider<LoginBloc>(
-          create: (context) => LoginBloc(userRepository: _userRepository),
-          child: LoginForm(
-            userRepository: _userRepository,
-          ),
+          create: (context) => LoginBloc(userRepository: UserRepository()),
+          child: LoginForm(),
         ),
       ),
     );

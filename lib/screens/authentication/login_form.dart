@@ -1,11 +1,10 @@
-import 'package:app/blocs/authentication/authentication_bloc.dart';
 import 'package:app/blocs/login/bloc.dart';
 import 'package:app/components/auth_choice_divider.dart';
 import 'package:app/components/facebook_button.dart';
 import 'package:app/components/google_button.dart';
 import 'package:app/components/primary_flat_button.dart';
 import 'package:app/components/text_formfield_decoration.dart';
-import 'package:app/repositories/user_repositories.dart';
+import 'package:app/screens/cockpit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,12 +12,6 @@ import '../../colors.dart';
 import '../../constants.dart';
 
 class LoginForm extends StatefulWidget {
-  final UserRepository _userRepository;
-
-  LoginForm({@required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository;
-
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -28,8 +21,6 @@ class _LoginFormState extends State<LoginForm> {
   final TextEditingController _passwordController = TextEditingController();
 
   LoginBloc _loginBloc;
-
-  UserRepository get _userRepository => widget._userRepository;
 
   bool get isPopulated =>
       _emailController.text.isNotEmpty & _passwordController.text.isNotEmpty;
@@ -54,7 +45,11 @@ class _LoginFormState extends State<LoginForm> {
           ..hideCurrentSnackBar()
           ..showSnackBar(SnackBar(
               content: Row(
-                children: <Widget>[Text("Login Failure"), Icon(Icons.error)],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text("Inicio de sección fallido"),
+                  Icon(Icons.error)
+                ],
               ),
               backgroundColor: Colors.red));
       }
@@ -66,7 +61,7 @@ class _LoginFormState extends State<LoginForm> {
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Logging in..."),
+                Text("Iniciando sesión..."),
                 CircularProgressIndicator()
               ],
             ),
@@ -74,7 +69,8 @@ class _LoginFormState extends State<LoginForm> {
       }
 
       if (state.isSuccess) {
-        BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
+        Navigator.pushNamed(context, CockpitScreen.routeName);
+        //BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
       }
     }, child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
       return Form(

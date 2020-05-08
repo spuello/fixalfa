@@ -1,15 +1,33 @@
 import 'package:app/colors.dart';
-import 'package:app/components/CircularShape.dart';
 import 'package:app/constants.dart';
-import 'package:app/screens/home_screen.dart';
+import 'package:app/screens/authentication/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  static const String id = "welcome_screen";
+  static const String routeName = "welcome_screen";
+
+  Container circularShape(
+      {double height: 5.0,
+      double width: 5.0,
+      double borderRadius: 50.0,
+      Color color}) {
+    return Container(
+      margin: EdgeInsets.only(right: 10.0),
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.all(
+          Radius.circular(borderRadius),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: kFixalfaGreen500,
       body: Column(
         children: [
           Expanded(
@@ -64,25 +82,26 @@ class WelcomeScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: <Widget>[
-                          CircularShape(
+                          circularShape(
                             color: Colors.grey,
                           ),
-                          CircularShape(
+                          circularShape(
                             color: Colors.grey,
                           ),
-                          CircularShape(
-                            color: kSecondaryColor,
+                          circularShape(
+                            color: kFixalfaAmber,
                             height: 8.0,
                             width: 25.0,
                           ),
                         ],
                       ),
                       FlatButton(
-                        color: kSecondaryColor,
+                        color: kFixalfaAmber,
                         padding: EdgeInsets.symmetric(
                             horizontal: 25.0, vertical: 15.0),
                         onPressed: () {
-                          Navigator.pushNamed(context, HomeScreen.id);
+                          Navigator.pushNamed(
+                              context, AuthenticationScreen.routeName);
                         },
                         child: Text(
                           "Comenzar",

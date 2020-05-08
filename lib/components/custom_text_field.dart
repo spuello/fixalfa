@@ -1,13 +1,13 @@
-import 'package:app/constants.dart';
+import 'package:app/colors.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
+class FixAlfaFormField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final TextInputType keyboardType;
   final Function onChanged;
 
-  CustomTextField(
+  FixAlfaFormField(
       {this.hintText, this.obscureText, this.keyboardType, this.onChanged});
 
   @override
@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey),
         filled: true,
-        fillColor: kInputFieldFillColor,
+        fillColor: kFixalfaGreen50,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.all(

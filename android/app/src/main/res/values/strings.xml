@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fixalfa</string>
+    <string name="facebook_app_id">591286521738037</string>
+    <string name="fb_login_protocol_scheme">fb591286521738037</string>
+</resources>

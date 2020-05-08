@@ -1,13 +1,14 @@
 import 'package:app/colors.dart';
 import 'package:app/constants.dart';
+import 'package:app/repositories/user_repositories.dart';
+import 'package:app/screens/authentication/login_screen.dart';
+import 'package:app/screens/authentication/registration_screen.dart';
 import 'package:app/screens/cockpit.dart';
-import 'package:app/screens/registration_screen.dart';
-import 'package:app/screens/signin_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  static final String id = "home_screen";
+class AuthenticationScreen extends StatelessWidget {
+  static final String routeName = "authentication_screen";
 
   FlatButton getFlatButton(
       {String title,
@@ -65,14 +66,16 @@ class HomeScreen extends StatelessWidget {
                         title: "Registrarse",
                         color: kFixalfaGreen500,
                         onPressed: () {
-                          Navigator.pushNamed(context, RegistrationScreen.id);
+                          Navigator.pushNamed(
+                              context, RegistrationScreen.routeName);
                         }),
                     SizedBox(
                       height: 20.0,
                     ),
                     getFlatButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, SignInScreen.id);
+                          Navigator.pushNamed(context, LoginScreen.routeName,
+                              arguments: UserRepository());
                         },
                         title: "Iniciar Sesión",
                         borderSideColor: kFixalfaGreen500,
@@ -84,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, CockpitScreen.id);
+                          Navigator.pushNamed(context, CockpitScreen.routeName);
                         },
                         child: Text(
                           "Omitir por ahora",

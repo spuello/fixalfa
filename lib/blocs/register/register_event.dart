@@ -34,3 +34,7 @@ class Submitted extends RegisterEvent {
   @override
   List<Object> get props => [email, password];
 }
+
+class RegisterWithFacebookPressed extends RegisterEvent {}
+
+class RegisterWithGooglePressed extends RegisterEvent {}

@@ -1,10 +1,12 @@
-import 'package:app/blocs/login/bloc.dart';
-import 'package:app/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class GoogleLoginButton extends StatelessWidget {
+import '../colors.dart';
+
+class FacebookButton extends StatelessWidget {
+  final Function onPressed;
+
+  FacebookButton({@required this.onPressed});
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -12,22 +14,20 @@ class GoogleLoginButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Icon(
-            FontAwesomeIcons.google,
+            FontAwesomeIcons.facebook,
             color: kFixalfaBackgroundWhite,
             size: 30.0,
           ),
           SizedBox(
             width: 20.0,
           ),
-          Text("Iniciar con Google",
+          Text("Iniciar Facebook",
               style: TextStyle(fontSize: 20.0, color: kFixalfaBackgroundWhite))
         ],
       ),
       padding: EdgeInsets.all(15.0),
-      onPressed: () {
-        BlocProvider.of<LoginBloc>(context).add(LoginWithGooglePressed());
-      },
-      color: kGoogleRedColor,
+      onPressed: onPressed,
+      color: kFacebookBlueColor,
     );
   }
 }
